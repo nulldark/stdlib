@@ -4,7 +4,3 @@ parameters:
     tmpDir: ./.build/cache/phpstan
     paths:
         - ./src
-        - ./tests
-
-includes:
-    - tools/phpstan/vendor/phpstan/phpstan-phpunit/extension.neon
