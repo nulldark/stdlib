@@ -1,0 +1,19 @@
+{
+    "name": "nulldark/collection",
+    "description": "A library for representing and manipulating collections.",
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Dominik Szamburski",
+            "email": "dominikszamburski99@gmail.com"
+        }
+    ],
+    "require": {},
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Nulldark\\Collection\\": "src/Collection/"
+        }
+    }
+}
