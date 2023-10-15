@@ -18,6 +18,11 @@
             "Nulldark\\Collection\\": "src/Collection/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Nulldark\\Tests\\": "tests/"
+        }
+    },
     "config": {
         "allow-plugins": {
             "bamarni/composer-bin-plugin": true
