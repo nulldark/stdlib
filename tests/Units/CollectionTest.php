@@ -23,8 +23,8 @@ class CollectionTest extends TestCase
         $foo2 = new Foo(2, 'foo2');
 
         $collection = new Collection([$foo1, $foo2]);
-        $collection = $collection->filter(function ($value){
-           return $value->id == 2;
+        $collection = $collection->filter(function ($value) {
+            return $value->id == 2;
         });
 
         $this->assertCount(1, $collection);
