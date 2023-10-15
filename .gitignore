@@ -1,1 +1,8 @@
-/vendor/
+.idea/
+.build/
+
+composer.lock
+vendor/
+
+phpcs.xml
+phpunit.xml
