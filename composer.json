@@ -29,5 +29,24 @@
             "forward-command": true,
             "target-directory": "tools"
         }
+    },
+    "scripts": {
+        "dev:analyze": [
+            "@dev:analyze:phpstan"
+        ],
+        "dev:analyze:phpstan": "bin/phpstan analyze --ansi --memory-limit=1G",
+        "dev:lint": [
+            "@dev:lint:fix",
+            "@dev:lint:style"
+        ],
+        "dev:lint:fix": "bin/phpcbf",
+        "dev:lint:style": "bin/phpcs --colors",
+        "dev:test": [
+            "@dev:lint",
+            "@dev:analyze",
+            "@dev:test:unit"
+        ],
+        "dev:test:coverage:html": "bin/phpunit --coverage-html .build/coverage/html/",
+        "dev:test:phpunit": "bin/phpunit"
     }
 }
