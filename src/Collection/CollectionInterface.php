@@ -32,7 +32,7 @@ use IteratorAggregate;
 /**
  * @author Dominik Szamburski
  * @package \Nulldark\Collection
- * @version 1.0.0
+ * @since 1.0.0
  * @license MIT
  *
  * @template TKey of array-key
