@@ -189,4 +189,22 @@ abstract class AbstractCollection implements CollectionInterface
 
         return $collection;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function contains(mixed $element, bool $strict = false): bool
+    {
+        return in_array($element, $this->items, $strict);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function add(mixed $element): bool
+    {
+        $this[] = $element;
+
+        return true;
+    }
 }

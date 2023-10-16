@@ -83,4 +83,27 @@ interface CollectionInterface extends ArrayAccess, Countable, IteratorAggregate
      * @return void
      */
     public function clear(): void;
+
+    /**
+     * Returns `true` if collection contains specify element.
+     *
+     * @since 1.1.0
+     *
+     * @param TValue $element
+     * @param bool $strict
+     * @return bool
+     *
+     */
+    public function contains(mixed $element, bool $strict = false): bool;
+
+    /**
+     * Adds specify element to collection.
+     *
+     * @since 1.1.0
+     *
+     * @param TValue $element
+     * @return bool
+     *
+     */
+    public function add(mixed $element): bool;
 }
