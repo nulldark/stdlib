@@ -2,7 +2,7 @@
 
 namespace Nulldark\Tests\Units;
 
-use Nulldark\Collection\Collection;
+use Nulldark\Stdlib\Collection;
 use Nulldark\Tests\Fixtures\Foo;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;

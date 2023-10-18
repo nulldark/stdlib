@@ -22,13 +22,13 @@
  * SOFTWARE.
  */
 
-namespace Nulldark\Collection;
+namespace Nulldark\Stdlib;
 
 use Traversable;
 
 /**
  * @author Dominik Szamburski
- * @package \Nulldark\Collection
+ * @package \Nulldark\Stdlib
  * @since 1.0.0
  * @license MIT
  *

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-namespace Nulldark\Collection;
+namespace Nulldark\Stdlib;
 
 use ArrayAccess;
 use Closure;
@@ -31,7 +31,7 @@ use IteratorAggregate;
 
 /**
  * @author Dominik Szamburski
- * @package \Nulldark\Collection
+ * @package \Nulldark\Stdlib
  * @since 1.0.0
  * @license MIT
  *

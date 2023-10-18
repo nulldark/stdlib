@@ -1,5 +1,5 @@
 {
-    "name": "nulldark/collection",
+    "name": "nulldark/stdlib",
     "description": "A library for representing and manipulating collections.",
     "license": "MIT",
     "type": "project",
@@ -15,7 +15,7 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "Nulldark\\Collection\\": "src/Collection/"
+            "Nulldark\\Stdlib\\": "src/Stdlib/"
         }
     },
     "autoload-dev": {
