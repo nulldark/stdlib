@@ -22,74 +22,45 @@
  * SOFTWARE.
  */
 
-namespace Nulldark\Stdlib\Array;
-
-use ArrayAccess;
-use Countable;
-use IteratorAggregate;
-use RuntimeException;
+namespace Nulldark\Stdlib\Collections;
 
 /**
  * @author Dominik Szamburski
- * @package \Nulldark\Stdlib\Array
- * @since 2.0.0
+ * @package \Nulldark\Stdlib\Collection
+ * @since 1.0.0
  * @license MIT
  *
  * @template TKey of array-key
  * @template TValue
  *
- * @extends ArrayAccess<TKey, TValue>
- * @extends IteratorAggregate<TKey, TValue>
+ * @extends GenericArray<TKey, TValue>
+ * @implements CollectionInterface<TKey, TValue>
  */
-interface ArrayInterface extends ArrayAccess, Countable, IteratorAggregate
+class Collection extends GenericArray implements CollectionInterface
 {
     /**
-     * Remove all items from collection.
-     *
-     * @return void
+     * @inheritDoc
      */
-    public function clear(): void;
+    public function all(): array
+    {
+        return $this->data;
+    }
 
     /**
-     * Checks whether the collection is empty.
-     *
-     * @since 2.0.0
-     *
-     * @return bool
+     * @inheritDoc
      */
-    public function empty(): bool;
+    public function add(mixed $element): bool
+    {
+        $this[] = $element;
+
+        return true;
+    }
 
     /**
-     * Execute callback over a collection.
-     *
-     * @param callable(TValue, TKey): TValue $callback
-     * @return $this
+     * @inheritDoc
      */
-    public function each(callable $callback): self;
-
-    /**
-     * Run a filter over a collection.
-     *
-     * @param callable(TValue): bool $callback
-     * @return $this
-     */
-    public function filter(callable $callback): self;
-
-    /**
-     * Returns a first item of collection
-     *
-     * @return TValue
-     *
-     * @throws RuntimeException if collection is empty.
-     */
-    public function first(): mixed;
-
-    /**
-     * Returns a last item of collection
-     *
-     * @return TValue
-     *
-     * @throws RuntimeException if collection is empty.
-     */
-    public function last(): mixed;
+    public function contains(mixed $element, bool $strict = false): bool
+    {
+        return in_array($element, $this->data, $strict);
+    }
 }

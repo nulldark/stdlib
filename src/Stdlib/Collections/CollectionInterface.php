@@ -22,56 +22,48 @@
  * SOFTWARE.
  */
 
-namespace Nulldark\Stdlib\Map;
-
-use Nulldark\Stdlib\Array\ArrayInterface;
+namespace Nulldark\Stdlib\Collections;
 
 /**
  * @author Dominik Szamburski
- * @package \Nulldark\Stdlib\Map
- * @since 2.0.0
+ * @package \Nulldark\Stdlib\Collection
+ * @since 1.0.0
  * @license MIT
  *
  * @template TKey of array-key
  * @template TValue
  *
- * @extends ArrayInterface<TKey, TValue>
+ * @extends GenericArrayInterface<TKey, TValue>
  */
-interface MapInterface extends ArrayInterface
+interface CollectionInterface extends GenericArrayInterface
 {
     /**
-     * Returns all keys for this map.
+     * Get all items from collection.
      *
-     * @return list<TKey>
+     * @return array<TKey, TValue>
      */
-    public function keys(): array;
+    public function all(): array;
 
     /**
-     * Inserts the value in the map associates the specified key.
+     * Returns `true` if collection contains specify element.
      *
-     * @param TKey $key
-     * @param TValue $value
+     * @since 1.1.0
      *
-     * @return TKey|null
+     * @param TValue $element
+     * @param bool $strict
+     * @return bool
+     *
      */
-    public function put(int|string $key, mixed $value): mixed;
+    public function contains(mixed $element, bool $strict = false): bool;
 
     /**
-     * Returns the value to which the specified key is mapped, if value is `null` returns `$defaultValue`.
+     * Adds specify element to collection.
      *
-     * @param TKey $key
-     * @param TValue|null $defaultValue
+     * @since 1.1.0
      *
-     * @return TValue|null the value `null` if key could not be found.
+     * @param TValue $element
+     * @return bool
+     *
      */
-    public function get(int|string $key, mixed $defaultValue = null): mixed;
-
-    /**
-     * Remove mapping from the map for a key.
-     *
-     * @param TKey $key
-     *
-     * @return TKey|null
-     */
-    public function remove(int|string $key): mixed;
+    public function add(mixed $element): bool;
 }

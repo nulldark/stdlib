@@ -22,50 +22,74 @@
  * SOFTWARE.
  */
 
-namespace Nulldark\Stdlib\Collection;
+namespace Nulldark\Stdlib\Collections;
 
-use Nulldark\Stdlib\Array\ArrayInterface;
+use ArrayAccess;
+use Countable;
+use IteratorAggregate;
+use RuntimeException;
 
 /**
  * @author Dominik Szamburski
- * @package \Nulldark\Stdlib\Collection
- * @since 1.0.0
+ * @package \Nulldark\Stdlib\Array
+ * @since 2.0.0
  * @license MIT
  *
  * @template TKey of array-key
  * @template TValue
  *
- * @extends ArrayInterface<TKey, TValue>
+ * @extends ArrayAccess<TKey, TValue>
+ * @extends IteratorAggregate<TKey, TValue>
  */
-interface CollectionInterface extends ArrayInterface
+interface GenericArrayInterface extends ArrayAccess, Countable, IteratorAggregate
 {
     /**
-     * Get all items from collection.
+     * Remove all items from collection.
      *
-     * @return array<TKey, TValue>
+     * @return void
      */
-    public function all(): array;
+    public function clear(): void;
 
     /**
-     * Returns `true` if collection contains specify element.
+     * Checks whether the collection is empty.
      *
-     * @since 1.1.0
+     * @since 2.0.0
      *
-     * @param TValue $element
-     * @param bool $strict
      * @return bool
-     *
      */
-    public function contains(mixed $element, bool $strict = false): bool;
+    public function empty(): bool;
 
     /**
-     * Adds specify element to collection.
+     * Execute callback over a collection.
      *
-     * @since 1.1.0
-     *
-     * @param TValue $element
-     * @return bool
-     *
+     * @param callable(TValue, TKey): TValue $callback
+     * @return $this
      */
-    public function add(mixed $element): bool;
+    public function each(callable $callback): self;
+
+    /**
+     * Run a filter over a collection.
+     *
+     * @param callable(TValue): bool $callback
+     * @return $this
+     */
+    public function filter(callable $callback): self;
+
+    /**
+     * Returns a first item of collection
+     *
+     * @return TValue
+     *
+     * @throws RuntimeException if collection is empty.
+     */
+    public function first(): mixed;
+
+    /**
+     * Returns a last item of collection
+     *
+     * @return TValue
+     *
+     * @throws RuntimeException if collection is empty.
+     */
+    public function last(): mixed;
 }

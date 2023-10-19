@@ -22,19 +22,34 @@
  * SOFTWARE.
  */
 
-namespace Nulldark\Stdlib\Map;
+namespace Nulldark\Stdlib\Collections;
 
 /**
  * @author Dominik Szamburski
- * @package \Nulldark\Stdlib\Map
- * @since 2.0.0
+ * @package Nulldark\Stdlib\Set
+ * @since 1.1.0
  * @license MIT
  *
  * @template TKey of array-key
  * @template TValue
  *
- * @extends AbstractMap<TKey, TValue>
+ * @extends Collection<TKey, TValue>
  */
-final class HashMap extends AbstractMap
+class Set extends Collection
 {
+    /**
+     * @inheritDoc
+     */
+    public function add(mixed $element): bool
+    {
+        return !$this->contains($element) && parent::add($element);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function offsetSet(mixed $offset, mixed $value): void
+    {
+        !$this->contains($value) && parent::offsetSet($offset, $value);
+    }
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace Nulldark\Tests\Units;
+namespace Nulldark\Tests\Units\Collections;
 
-use Nulldark\Stdlib\Collection;
+use Nulldark\Stdlib\Collections\Collection;
 use Nulldark\Tests\Fixtures\Foo;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(Collection::class)]
-class CollectionTest extends TestCase
+class GenericArrayTest extends TestCase
 {
     public function testConstructor(): void
     {

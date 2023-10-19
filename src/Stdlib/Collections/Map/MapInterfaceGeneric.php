@@ -22,19 +22,56 @@
  * SOFTWARE.
  */
 
-namespace Nulldark\Stdlib\Set;
+namespace Nulldark\Stdlib\Collections\Map;
+
+use Nulldark\Stdlib\Collections\GenericArrayInterface;
 
 /**
  * @author Dominik Szamburski
- * @package \Nulldark\Stdlib\Set
- * @since 1.1.0
+ * @package \Nulldark\Stdlib\Map
+ * @since 2.0.0
  * @license MIT
  *
  * @template TKey of array-key
  * @template TValue
  *
- * @extends AbstractSet<TKey, TValue>
+ * @extends GenericArrayInterface<TKey, TValue>
  */
-final class Set extends AbstractSet
+interface MapInterfaceGeneric extends GenericArrayInterface
 {
+    /**
+     * Returns all keys for this map.
+     *
+     * @return list<TKey>
+     */
+    public function keys(): array;
+
+    /**
+     * Inserts the value in the map associates the specified key.
+     *
+     * @param TKey $key
+     * @param TValue $value
+     *
+     * @return TKey|null
+     */
+    public function put(int|string $key, mixed $value): mixed;
+
+    /**
+     * Returns the value to which the specified key is mapped, if value is `null` returns `$defaultValue`.
+     *
+     * @param int|string $key
+     * @param TValue|null $defaultValue
+     *
+     * @return TValue|null the value `null` if key could not be found.
+     */
+    public function get(int|string $key, mixed $defaultValue = null): mixed;
+
+    /**
+     * Remove mapping from the map for a key.
+     *
+     * @param int|string $key
+     *
+     * @return TKey|null
+     */
+    public function remove(int|string $key): mixed;
 }

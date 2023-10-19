@@ -22,9 +22,8 @@
  * SOFTWARE.
  */
 
-namespace Nulldark\Stdlib\Array;
+namespace Nulldark\Stdlib\Collections;
 
-use Nulldark\Stdlib\Collection\CollectionInterface;
 use Traversable;
 
 /**
@@ -36,9 +35,9 @@ use Traversable;
  * @template TKey of array-key
  * @template TValue
  *
- * @implements ArrayInterface<TKey, TValue>
+ * @implements GenericArrayInterface<TKey, TValue>
  */
-abstract class AbstractArray implements ArrayInterface
+class GenericArray implements GenericArrayInterface
 {
     /**
      * The items of array.
@@ -172,7 +171,7 @@ abstract class AbstractArray implements ArrayInterface
     /**
      * @inheritDoc
      */
-    public function each(callable $callback): ArrayInterface
+    public function each(callable $callback): GenericArrayInterface
     {
         foreach ($this->data as $key => $item) {
             if ($callback($item, $key) === false) {
@@ -186,7 +185,7 @@ abstract class AbstractArray implements ArrayInterface
     /**
      * @inheritDoc
      */
-    public function filter(callable $callback): ArrayInterface
+    public function filter(callable $callback): GenericArrayInterface
     {
         $collection = clone $this;
         $collection->data = array_merge([], array_filter($collection->data, $callback));

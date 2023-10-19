@@ -22,30 +22,74 @@
  * SOFTWARE.
  */
 
-namespace Nulldark\Stdlib\Set;
+namespace Nulldark\Stdlib\Collections\Map;
 
-use Nulldark\Stdlib\Collection\AbstractCollection;
+use Nulldark\Stdlib\Collections\GenericArray;
 
 /**
  * @author Dominik Szamburski
- * @package Nulldark\Stdlib\Set
- * @since 1.1.0
+ * @package \Nulldark\Stdlib\Map
+ * @since 2.0.0
  * @license MIT
  *
  * @template TKey of array-key
  * @template TValue
  *
- * @extends AbstractCollection<TKey, TValue>
+ * @extends GenericArray<TKey, TValue>
+ * @implements MapInterfaceGeneric<TKey, TValue>
  */
-abstract class AbstractSet extends AbstractCollection
+abstract class GenericMap extends GenericArray implements MapInterfaceGeneric
 {
-    public function add(mixed $element): bool
+    /**
+     * @inheritDoc
+     */
+    public function keys(): array
     {
-        return !$this->contains($element) && parent::add($element);
+        return array_keys($this->data);
     }
 
+    /**
+     * @param TKey $offset
+     * @param TValue $value
+     *
+     * @inheritDoc
+     */
     public function offsetSet(mixed $offset, mixed $value): void
     {
-        !$this->contains($value) && parent::offsetSet($offset, $value);
+        if ($offset === null) {
+            throw new \InvalidArgumentException("Key must be provided for value " . var_export($value, true));
+        }
+
+        $this->data[$offset] = $value;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function put(int|string $key, mixed $value): mixed
+    {
+        $previousValue = $this->get($key);
+        $this[$key] = $value;
+
+        return $previousValue;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function get(int|string $key, mixed $defaultValue = null): mixed
+    {
+        return $this[$key] ?? $defaultValue;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function remove(int|string $key): mixed
+    {
+        $previousValue = $this->get($key);
+        unset($this[$key]);
+
+        return $previousValue;
     }
 }

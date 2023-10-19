@@ -22,47 +22,19 @@
  * SOFTWARE.
  */
 
-namespace Nulldark\Stdlib\Collection;
-
-use Nulldark\Stdlib\Array\AbstractArray;
+namespace Nulldark\Stdlib\Collections\Map;
 
 /**
  * @author Dominik Szamburski
- * @package \Nulldark\Stdlib\Collection
- * @since 1.0.0
+ * @package \Nulldark\Stdlib\Map
+ * @since 2.0.0
  * @license MIT
  *
  * @template TKey of array-key
  * @template TValue
  *
- * @extends AbstractArray<TKey, TValue>
- * @implements CollectionInterface<TKey, TValue>
+ * @extends GenericMap<TKey, TValue>
  */
-abstract class AbstractCollection extends AbstractArray implements CollectionInterface
+final class HashMap extends GenericMap
 {
-    /**
-     * @inheritDoc
-     */
-    public function all(): array
-    {
-        return $this->data;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function add(mixed $element): bool
-    {
-        $this[] = $element;
-
-        return true;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function contains(mixed $element, bool $strict = false): bool
-    {
-        return in_array($element, $this->data, $strict);
-    }
 }
