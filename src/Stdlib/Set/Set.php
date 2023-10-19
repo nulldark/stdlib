@@ -22,28 +22,19 @@
  * SOFTWARE.
  */
 
-namespace Nulldark\Stdlib;
+namespace Nulldark\Stdlib\Set;
 
 /**
  * @author Dominik Szamburski
- * @package \Nulldark\Stdlib
+ * @package \Nulldark\Stdlib\Set
  * @since 1.1.0
  * @license MIT
  *
  * @template TKey of array-key
  * @template TValue
  *
- * @extends AbstractCollection<TKey, TValue>
+ * @extends AbstractSet<TKey, TValue>
  */
-abstract class AbstractSet extends AbstractCollection
+final class Set extends AbstractSet
 {
-    public function add(mixed $element): bool
-    {
-        return !$this->contains($element) && parent::add($element);
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        !$this->contains($value) && parent::offsetSet($offset, $value);
-    }
 }
