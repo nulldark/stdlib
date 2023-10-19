@@ -30,11 +30,11 @@ namespace Nulldark\Stdlib\Collections;
  * @since 1.0.0
  * @license MIT
  *
- * @template TKey of array-key
- * @template TValue
+ * @template K of array-key
+ * @template V
  *
- * @extends GenericArray<TKey, TValue>
- * @implements CollectionInterface<TKey, TValue>
+ * @extends GenericArray<K, V>
+ * @implements CollectionInterface<K, V>
  */
 class Collection extends GenericArray implements CollectionInterface
 {

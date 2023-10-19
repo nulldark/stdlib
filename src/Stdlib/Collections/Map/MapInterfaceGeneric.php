@@ -32,46 +32,46 @@ use Nulldark\Stdlib\Collections\GenericArrayInterface;
  * @since 2.0.0
  * @license MIT
  *
- * @template TKey of array-key
- * @template TValue
+ * @template K of array-key
+ * @template V
  *
- * @extends GenericArrayInterface<TKey, TValue>
+ * @extends GenericArrayInterface<K, V>
  */
 interface MapInterfaceGeneric extends GenericArrayInterface
 {
     /**
      * Returns all keys for this map.
      *
-     * @return list<TKey>
+     * @return list<K>
      */
     public function keys(): array;
 
     /**
      * Inserts the value in the map associates the specified key.
      *
-     * @param TKey $key
-     * @param TValue $value
+     * @param K $key
+     * @param V $value
      *
-     * @return TKey|null
+     * @return K|null
      */
     public function put(int|string $key, mixed $value): mixed;
 
     /**
-     * Returns the value to which the specified key is mapped, if value is `null` returns `$defaultValue`.
+     * Returns the value to which the specified key is mapped, if value is `null` returns `$defaulV`.
      *
      * @param int|string $key
-     * @param TValue|null $defaultValue
+     * @param V|null $defaulV
      *
-     * @return TValue|null the value `null` if key could not be found.
+     * @return V|null the value `null` if key could not be found.
      */
-    public function get(int|string $key, mixed $defaultValue = null): mixed;
+    public function get(int|string $key, mixed $defaulV = null): mixed;
 
     /**
      * Remove mapping from the map for a key.
      *
      * @param int|string $key
      *
-     * @return TKey|null
+     * @return K|null
      */
     public function remove(int|string $key): mixed;
 }

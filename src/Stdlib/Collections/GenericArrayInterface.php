@@ -35,11 +35,11 @@ use RuntimeException;
  * @since 2.0.0
  * @license MIT
  *
- * @template TKey of array-key
- * @template TValue
+ * @template K of array-key
+ * @template V
  *
- * @extends ArrayAccess<TKey, TValue>
- * @extends IteratorAggregate<TKey, TValue>
+ * @extends ArrayAccess<K, V>
+ * @extends IteratorAggregate<K, V>
  */
 interface GenericArrayInterface extends ArrayAccess, Countable, IteratorAggregate
 {
@@ -62,7 +62,7 @@ interface GenericArrayInterface extends ArrayAccess, Countable, IteratorAggregat
     /**
      * Execute callback over a collection.
      *
-     * @param callable(TValue, TKey): TValue $callback
+     * @param callable(V, K): V $callback
      * @return $this
      */
     public function each(callable $callback): self;
@@ -70,7 +70,7 @@ interface GenericArrayInterface extends ArrayAccess, Countable, IteratorAggregat
     /**
      * Run a filter over a collection.
      *
-     * @param callable(TValue): bool $callback
+     * @param callable(V): bool $callback
      * @return $this
      */
     public function filter(callable $callback): self;
@@ -78,7 +78,7 @@ interface GenericArrayInterface extends ArrayAccess, Countable, IteratorAggregat
     /**
      * Returns a first item of collection
      *
-     * @return TValue
+     * @return V
      *
      * @throws RuntimeException if collection is empty.
      */
@@ -87,7 +87,7 @@ interface GenericArrayInterface extends ArrayAccess, Countable, IteratorAggregat
     /**
      * Returns a last item of collection
      *
-     * @return TValue
+     * @return V
      *
      * @throws RuntimeException if collection is empty.
      */

@@ -30,10 +30,10 @@ namespace Nulldark\Stdlib\Collections\Map;
  * @since 2.0.0
  * @license MIT
  *
- * @template TKey of array-key
- * @template TValue
+ * @template K of array-key
+ * @template V
  *
- * @extends GenericMap<TKey, TValue>
+ * @extends GenericMap<K, V>
  */
 final class HashMap extends GenericMap
 {

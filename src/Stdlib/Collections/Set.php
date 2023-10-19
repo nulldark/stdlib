@@ -30,10 +30,10 @@ namespace Nulldark\Stdlib\Collections;
  * @since 1.1.0
  * @license MIT
  *
- * @template TKey of array-key
- * @template TValue
+ * @template K of array-key
+ * @template V
  *
- * @extends Collection<TKey, TValue>
+ * @extends Collection<K, V>
  */
 class Set extends Collection
 {

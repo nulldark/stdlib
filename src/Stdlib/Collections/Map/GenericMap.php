@@ -32,11 +32,11 @@ use Nulldark\Stdlib\Collections\GenericArray;
  * @since 2.0.0
  * @license MIT
  *
- * @template TKey of array-key
- * @template TValue
+ * @template K of array-key
+ * @template V
  *
- * @extends GenericArray<TKey, TValue>
- * @implements MapInterfaceGeneric<TKey, TValue>
+ * @extends GenericArray<K, V>
+ * @implements MapInterfaceGeneric<K, V>
  */
 abstract class GenericMap extends GenericArray implements MapInterfaceGeneric
 {
@@ -49,8 +49,8 @@ abstract class GenericMap extends GenericArray implements MapInterfaceGeneric
     }
 
     /**
-     * @param TKey $offset
-     * @param TValue $value
+     * @param K $offset
+     * @param V $value
      *
      * @inheritDoc
      */
@@ -77,9 +77,9 @@ abstract class GenericMap extends GenericArray implements MapInterfaceGeneric
     /**
      * @inheritDoc
      */
-    public function get(int|string $key, mixed $defaultValue = null): mixed
+    public function get(int|string $key, mixed $defaulV = null): mixed
     {
-        return $this[$key] ?? $defaultValue;
+        return $this[$key] ?? $defaulV;
     }
 
     /**

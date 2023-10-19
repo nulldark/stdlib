@@ -30,17 +30,17 @@ namespace Nulldark\Stdlib\Collections;
  * @since 1.0.0
  * @license MIT
  *
- * @template TKey of array-key
- * @template TValue
+ * @template K of array-key
+ * @template V
  *
- * @extends GenericArrayInterface<TKey, TValue>
+ * @extends GenericArrayInterface<K, V>
  */
 interface CollectionInterface extends GenericArrayInterface
 {
     /**
      * Get all items from collection.
      *
-     * @return array<TKey, TValue>
+     * @return array<K, V>
      */
     public function all(): array;
 
@@ -49,7 +49,7 @@ interface CollectionInterface extends GenericArrayInterface
      *
      * @since 1.1.0
      *
-     * @param TValue $element
+     * @param V $element
      * @param bool $strict
      * @return bool
      *
@@ -61,7 +61,7 @@ interface CollectionInterface extends GenericArrayInterface
      *
      * @since 1.1.0
      *
-     * @param TValue $element
+     * @param V $element
      * @return bool
      *
      */
