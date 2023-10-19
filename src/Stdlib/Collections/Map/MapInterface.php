@@ -37,7 +37,7 @@ use Nulldark\Stdlib\Collections\GenericArrayInterface;
  *
  * @extends GenericArrayInterface<K, V>
  */
-interface MapInterfaceGeneric extends GenericArrayInterface
+interface MapInterface extends GenericArrayInterface
 {
     /**
      * Returns all keys for this map.

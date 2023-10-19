@@ -36,9 +36,9 @@ use Nulldark\Stdlib\Collections\GenericArray;
  * @template V
  *
  * @extends GenericArray<K, V>
- * @implements MapInterfaceGeneric<K, V>
+ * @implements MapInterface<K, V>
  */
-abstract class GenericMap extends GenericArray implements MapInterfaceGeneric
+abstract class GenericMap extends GenericArray implements MapInterface
 {
     /**
      * @inheritDoc
