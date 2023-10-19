@@ -34,8 +34,7 @@ use Nulldark\Stdlib\Collections\GenericArray;
  *
  * @template K of array-key
  * @template V
- *
- * @extends GenericArray<K, V>
+ * @extends GenericArray<V>
  * @implements MapInterface<K, V>
  */
 class GenericMap extends GenericArray implements MapInterface
@@ -77,9 +76,9 @@ class GenericMap extends GenericArray implements MapInterface
     /**
      * @inheritDoc
      */
-    public function get(int|string $key, mixed $defaulV = null): mixed
+    public function get(int|string $key, mixed $default = null): mixed
     {
-        return $this[$key] ?? $defaulV;
+        return $this[$key] ?? $default;
     }
 
     /**

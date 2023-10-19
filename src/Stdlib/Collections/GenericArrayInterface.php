@@ -35,11 +35,9 @@ use RuntimeException;
  * @since 2.0.0
  * @license MIT
  *
- * @template K of array-key
  * @template V
- *
- * @extends ArrayAccess<K, V>
- * @extends IteratorAggregate<K, V>
+ * @extends ArrayAccess<array-key, V>
+ * @extends IteratorAggregate<array-key, V>
  */
 interface GenericArrayInterface extends ArrayAccess, Countable, IteratorAggregate
 {
@@ -62,7 +60,7 @@ interface GenericArrayInterface extends ArrayAccess, Countable, IteratorAggregat
     /**
      * Execute callback over a collection.
      *
-     * @param callable(V, K): V $callback
+     * @param callable(V, array-key): V $callback
      * @return $this
      */
     public function each(callable $callback): self;

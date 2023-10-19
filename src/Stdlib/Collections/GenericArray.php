@@ -32,22 +32,20 @@ use Traversable;
  * @since 2.0.0
  * @license MIT
  *
- * @template K of array-key
  * @template V
- *
- * @implements GenericArrayInterface<K, V>
+ * @implements GenericArrayInterface<V>
  */
 class GenericArray implements GenericArrayInterface
 {
     /**
      * The items of array.
      *
-     * @var array<K, V>
+     * @var array<array-key, V>
      */
     protected array $data = [];
 
     /**
-     * @param array<K, V> $items
+     * @param array<array-key, V> $items
      */
     public function __construct(array $items = [])
     {
@@ -75,7 +73,7 @@ class GenericArray implements GenericArrayInterface
     /**
      * @inheritDoc
      *
-     * @return Traversable<K, V>
+     * @return Traversable<array-key, V>
      */
     public function getIterator(): Traversable
     {
@@ -85,7 +83,7 @@ class GenericArray implements GenericArrayInterface
     /**
      * @inheritDoc
      *
-     * @param K $offset
+     * @param array-key $offset
      *
      * @return bool
      */
@@ -97,7 +95,7 @@ class GenericArray implements GenericArrayInterface
     /**
      * @inheritDoc
      *
-     * @param K $offset
+     * @param array-key $offset
      *
      * @return V
      */
@@ -109,7 +107,7 @@ class GenericArray implements GenericArrayInterface
     /**
      * @inheritDoc
      *
-     * @param K $offset
+     * @param array-key|null $offset
      * @param V $value
      *
      * @return void
@@ -126,7 +124,7 @@ class GenericArray implements GenericArrayInterface
     /**
      * @inheritDoc
      *
-     * @param K $offset
+     * @param array-key $offset
      *
      * @return void
      */

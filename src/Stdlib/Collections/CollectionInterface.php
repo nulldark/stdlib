@@ -30,17 +30,15 @@ namespace Nulldark\Stdlib\Collections;
  * @since 1.0.0
  * @license MIT
  *
- * @template K of array-key
  * @template V
- *
- * @extends GenericArrayInterface<K, V>
+ * @extends GenericArrayInterface<V>
  */
 interface CollectionInterface extends GenericArrayInterface
 {
     /**
      * Get all items from collection.
      *
-     * @return array<K, V>
+     * @return array<array-key, V>
      */
     public function all(): array;
 

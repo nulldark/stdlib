@@ -34,8 +34,7 @@ use Nulldark\Stdlib\Collections\GenericArrayInterface;
  *
  * @template K of array-key
  * @template V
- *
- * @extends GenericArrayInterface<K, V>
+ * @extends GenericArrayInterface<V>
  */
 interface MapInterface extends GenericArrayInterface
 {
@@ -52,26 +51,26 @@ interface MapInterface extends GenericArrayInterface
      * @param K $key
      * @param V $value
      *
-     * @return K|null
+     * @return V|null
      */
     public function put(int|string $key, mixed $value): mixed;
 
     /**
      * Returns the value to which the specified key is mapped, if value is `null` returns `$defaulV`.
      *
-     * @param int|string $key
-     * @param V|null $defaulV
+     * @param K $key
+     * @param mixed $default
      *
      * @return V|null the value `null` if key could not be found.
      */
-    public function get(int|string $key, mixed $defaulV = null): mixed;
+    public function get(int|string $key, mixed $default = null): mixed;
 
     /**
      * Remove mapping from the map for a key.
      *
-     * @param int|string $key
+     * @param K $key
      *
-     * @return K|null
+     * @return V|null
      */
     public function remove(int|string $key): mixed;
 }

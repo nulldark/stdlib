@@ -32,7 +32,6 @@ namespace Nulldark\Stdlib\Collections\Map;
  *
  * @template K of array-key
  * @template V
- *
  * @extends GenericMap<K, V>
  */
 final class HashMap extends GenericMap
