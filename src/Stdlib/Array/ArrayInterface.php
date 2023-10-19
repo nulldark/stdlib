@@ -27,6 +27,7 @@ namespace Nulldark\Stdlib\Array;
 use ArrayAccess;
 use Countable;
 use IteratorAggregate;
+use RuntimeException;
 
 /**
  * @author Dominik Szamburski
@@ -57,4 +58,38 @@ interface ArrayInterface extends ArrayAccess, Countable, IteratorAggregate
      * @return bool
      */
     public function empty(): bool;
+
+    /**
+     * Execute callback over a collection.
+     *
+     * @param callable(TValue, TKey): TValue $callback
+     * @return $this
+     */
+    public function each(callable $callback): self;
+
+    /**
+     * Run a filter over a collection.
+     *
+     * @param callable(TValue): bool $callback
+     * @return $this
+     */
+    public function filter(callable $callback): self;
+
+    /**
+     * Returns a first item of collection
+     *
+     * @return TValue
+     *
+     * @throws RuntimeException if collection is empty.
+     */
+    public function first(): mixed;
+
+    /**
+     * Returns a last item of collection
+     *
+     * @return TValue
+     *
+     * @throws RuntimeException if collection is empty.
+     */
+    public function last(): mixed;
 }

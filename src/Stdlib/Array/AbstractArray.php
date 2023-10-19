@@ -24,6 +24,7 @@
 
 namespace Nulldark\Stdlib\Array;
 
+use Nulldark\Stdlib\Collection\CollectionInterface;
 use Traversable;
 
 /**
@@ -141,5 +142,55 @@ abstract class AbstractArray implements ArrayInterface
     public function count(): int
     {
         return \count($this->data);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function first(): mixed
+    {
+        $index = array_key_first($this->data);
+
+        if ($index === null) {
+            throw new \RuntimeException("Can't find a first element, Collection is empty.");
+        }
+
+        return $this[$index];
+    }
+
+    public function last(): mixed
+    {
+        $index = array_key_last($this->data);
+
+        if ($index === null) {
+            throw new \RuntimeException("Can't find a last element, Collection is empty.");
+        }
+
+        return $this[$index];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function each(callable $callback): ArrayInterface
+    {
+        foreach ($this->data as $key => $item) {
+            if ($callback($item, $key) === false) {
+                break;
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function filter(callable $callback): ArrayInterface
+    {
+        $collection = clone $this;
+        $collection->data = array_merge([], array_filter($collection->data, $callback));
+
+        return $collection;
     }
 }

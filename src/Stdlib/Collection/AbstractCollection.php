@@ -22,19 +22,47 @@
  * SOFTWARE.
  */
 
-namespace Nulldark\Stdlib;
+namespace Nulldark\Stdlib\Collection;
+
+use Nulldark\Stdlib\Array\AbstractArray;
 
 /**
  * @author Dominik Szamburski
- * @package \Nulldark\Stdlib
+ * @package \Nulldark\Stdlib\Collection
  * @since 1.0.0
  * @license MIT
  *
  * @template TKey of array-key
  * @template TValue
  *
- * @extends AbstractCollection<TKey, TValue>
+ * @extends AbstractArray<TKey, TValue>
+ * @implements CollectionInterface<TKey, TValue>
  */
-final class Collection extends AbstractCollection
+abstract class AbstractCollection extends AbstractArray implements CollectionInterface
 {
+    /**
+     * @inheritDoc
+     */
+    public function all(): array
+    {
+        return $this->data;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function add(mixed $element): bool
+    {
+        $this[] = $element;
+
+        return true;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function contains(mixed $element, bool $strict = false): bool
+    {
+        return in_array($element, $this->data, $strict);
+    }
 }
